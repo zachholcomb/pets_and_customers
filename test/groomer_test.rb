@@ -39,4 +39,14 @@ class GroomerTest < Minitest::Test
     @joel.charge(100)
     assert_equal [@joel], @pretty_paw.customers_with_outstanding_balances
   end
+
+  def test_it_can_count_number_of_pets_by_type
+    @pretty_paw.add_customer(@joel)
+    @pretty_paw.add_customer(@zach)
+    @joel.adopt(@samson)
+    @joel.adopt(@lucy)
+    @zach.adopt(@samantha)
+    assert_equal 2, @pretty_paw.count_pets(:dog)
+    assert_equal 1, @pretty_paw.count_pets(:cat)
+  end
 end

@@ -19,4 +19,16 @@ class Groomer
     end
     customers_with_balances
   end
+
+  def count_pets(pet_type)
+    pets_by_type = []
+    @customers.each do |id, customer|
+      customer.pets.each do |pet|
+        if pet.type == pet_type
+          pets_by_type << pet
+        end
+      end
+    end
+    pets_by_type.length
+  end
 end
