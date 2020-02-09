@@ -17,38 +17,21 @@ class CustomerTest < Minitest::Test
   end
 
   def test_it_starts_with_empty_pets
+    assert_equal [], @joel.pets
   end
+
+  def test_it_can_adopt_pets
+    @joel.adopt(@samson)
+    @joel.adopt(@lucy)
+    assert_equal [@samson, @lucy], @joel.pets
+  end
+
+  def test_it_starts_with_empty_outstanding_balance
+    assert_equal 0, @joel.outstanding_balance
+  end
+
 end
 
-
-
-
-
-# pry(main)> joel.name
-# # => "Joel"
-#
-# pry(main)> joel.id
-# # => 2
-#
-# pry(main)> joel.pets
-# # => []
-#
-# pry(main)>
-# # => #<Pet:0x00007ff8dc1f86a0...>
-#
-# pry(main)>
-# # => #<Pet:0x00007ff8dc93e108...>
-#
-# pry(main)> joel.adopt(samson)
-#
-# pry(main)> joel.adopt(lucy)
-#
-# pry(main)> joel.pets
-# # => [#<Pet:0x00007ff8dc1f86a0...>, #<Pet:0x00007ff8dc93e108...>]
-#
-# pry(main)> joel.outstanding_balance
-# # => 0
-#
 # pry(main)> joel.charge(15)
 #
 # pry(main)> joel.charge(7)
