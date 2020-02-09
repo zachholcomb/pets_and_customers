@@ -30,11 +30,13 @@ class CustomerTest < Minitest::Test
     assert_equal 0, @joel.outstanding_balance
   end
 
-end
+  def test_it_can_charge_and_it_affects_outstanding_balance
+    assert_equal 0, @joel.outstanding_balance
 
-# pry(main)> joel.charge(15)
-#
-# pry(main)> joel.charge(7)
-#
-# pry(main)> joel.outstanding_balance
-# # => 22
+    @joel.charge(15)
+    assert_equal 15, @joel.outstanding_balance
+
+    @joel.charge(7)
+    assert_equal 22, @joel.outstanding_balance
+  end
+end
