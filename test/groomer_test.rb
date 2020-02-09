@@ -19,4 +19,24 @@ class GroomerTest < Minitest::Test
     assert_equal "Pretty Paw", @pretty_paw.name
   end
 
+  def test_it_starts_with_no_customers
+    test_hash = {}
+    assert_equal test_hash, @pretty_paw.customers
+  end
+
+  def test_it_can_add_customers
+    @pretty_paw.add_customer(@zach)
+    @pretty_paw.add_customer(@joel)
+    test_hash = {3 => @zach, 2 => @joel}
+    assert_equal test_hash, @pretty_paw.customers
+    assert_equal @pretty_paw.customers[2], @joel
+    assert_equal @pretty_paw.customers[3], @zach
+  end
+
+  def test_it_can_find_all_the_customers_with_outstanding_balances
+    @pretty_paw.add_customer(@joel)
+    @pretty_paw.add_customer(@zach)
+    @joel.charge(100)
+    assert_equal [@joel], @pretty_paw.customers_with_outstanding_balances
+  end
 end
