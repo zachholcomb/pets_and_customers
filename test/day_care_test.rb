@@ -34,6 +34,8 @@ class DayCareTest < Minitest::Test
   end
 
   def test_it_can_list_all_pets_unfed
+    @paw_paw.add_customer(@joel)
+    @paw_paw.add_customer(@zach)
     @joel.adopt(@samson)
     @joel.adopt(@lucy)
     @zach.adopt(@samantha)
